@@ -3,8 +3,26 @@
     <header>
       猫眼电影
     </header>
-    <main></main>
-    <nav>
+    <main>
+      <nav class="movie-nav"> 
+        <ul>
+          <li>
+            <span>北京</span>
+            <b>&#xe6b9;</b>
+          </li>
+          <li>
+            <span class="active">热映</span>
+            <span>待映</span>
+          </li>
+          <li>&#xe651;</li>
+        </ul>
+      </nav>
+      <div class="move-list">
+        <MovieList></MovieList>
+      </div>
+      
+    </main>
+    <nav class="tabbar">
       <ul>
         <li class="active">
           <b>&#xe8ae;</b>
@@ -22,12 +40,24 @@
     </nav>
   </div>
 </template>
-
-<style lang="stylus">
+<script>
+import MovieList from './components/MovieList.vue'
+export default {
+  components:{
+    MovieList
+    }
+}
+</script>
+<style lang="stylus" scoped>
+@import './assets/stylus/border1px.styl'
 @font-face {
-  font-family: 'iconfont';
-  src:  url('./assets/icons/iconfont.woff') format('woff'), 
-        url('./assets/icons/iconfont.ttf') format('truetype');
+  font-family: 'iconfont-nav';
+  src:  url('./assets/icons/iconfont-nav.woff') format('woff'), 
+        url('./assets/icons/iconfont-nav.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'iconfont-search';
+  src:  url('./assets/icons/iconfont-search.ttf') format('truetype');
 }
 div
   display: flex
@@ -43,16 +73,59 @@ div
     font-weight: bold
   main
    flex: 1
-  nav
+   display: flex
+   flex-direction: column
+   overflow: hidden
+   .move-list
+     flex: 1
+     overflow-y:scroll
+   .movie-nav
+    > ul 
+        border1px(0 0 1px 0)
+        display: flex
+        height: .44rem
+        li:first-child
+          font-family: iconfont-search
+          width .9rem
+          display: flex
+          justify-content: flex-start
+          align-items: center
+          color: #666
+          margin-left: .15rem
+        li:nth-child(2)
+          flex: 1
+          display: flex
+          justify-content: flex-start
+          align-items: center
+          span
+            height: .44rem
+            padding: 0 .15rem
+            line-height: .44rem
+            display: inline-block
+            color: #666
+            &:first-child
+              margin-right: .3rem
+            &.active
+              border-bottom:  2px solid #cd4c42
+              color: #cd4c42
+        li:last-child
+          font-family: iconfont-search
+          width .44rem
+          border1px(0 0 0 1px,solid,#eee)
+          font-size: .2rem
+          text-align: center
+          line-height: .44rem
+          color: #cd4c42
+  .tabbar
     height: .44rem
-    border 1px solid #ccc
+    border1px(1px 0 0 0)
     ul
       display: flex
       li
         justify-content: center
         align-items: center
         flex: 1
-        font-family: iconfont
+        font-family: iconfont-nav
         display: flex
         flex-direction: column
         padding-top: .05rem

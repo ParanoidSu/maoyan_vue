@@ -1,0 +1,34 @@
+border1px(width=1px,style=solid,color=#ccc,radius=0)
+    position: relative
+    &::after
+        content: ''
+
+        border-color: color
+        border-radius: radius
+        border-width: width
+        border-style: style
+
+        left: 0
+        right: 0
+        top: 0
+        bottom: 0
+
+        position: absolute
+        @media (max--moz-device-pixel-ratio:1.49),(-webkit-max-device-pixel-ratio:1.49)
+            width: 100%
+            height: 100%
+            border-radius: radius
+            transform: scale(1)
+            transform-origin: 0 0
+        @media (min--moz-device-pixel-ratio:1.5) and (max--moz-device-pixel-ratio:2.49),(-webkit-min-device-pixel-ratio:1.5) and (-webkit-max-device-pixel-ratio:2.49)
+            width: 200%
+            height: 200%
+            border-radius: radius * 2
+            transform: scale(0.5)
+            transform-origin: 0 0
+        @media (min--moz-device-pixel-ratio:2.5) and (max--moz-device-pixel-ratio:3.5),(-webkit-min-device-pixel-ratio:2.5) and (-webkit-max-device-pixel-ratio:3.5)
+            width: 300%
+            height: 300%
+            border-radius: radius * 3
+            transform: scale(0.3333)
+            transform-origin: 0 0
