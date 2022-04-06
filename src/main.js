@@ -1,12 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 import './assets/reset.css'
-import Http from '@/utils/http'
+import router from '@/router/index'
 
 Vue.config.productionTip = false
 
-
 const vm = new Vue({
-  render: h => h(App)
+  render: h => h(App),
+  router
 }).$mount('#app')
-vm.__proto__.http = new Http()

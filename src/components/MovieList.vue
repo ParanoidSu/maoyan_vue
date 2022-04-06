@@ -1,94 +1,18 @@
 <template>
         <ul>
-            <li>
+            <li v-for="mv in MovieList" :key="mv.index">
                 <div>
-                    <img src="" alt="">
+                    <img :src="mv.img" alt="">
                 </div>
                 <div class="introduction">
-                    <h1>神奇女侠2</h1>
-                    <p>奇幻</p>
-                    <p>主演:尼古拉斯尼古拉斯尼古拉斯尼古拉斯尼古拉斯尼古拉斯</p>
-                    <div>放映9999场</div>
+                    <h1>{{mv.nm}}</h1>
+                    <p>{{mv.cat}}</p>
+                    <p>{{mv.desc}}</p>
+                    <div>{{mv.showInfo}}</div>
                 </div>
                 <div >
-                    <MovieScore></MovieScore>
-                    <MovieButton></MovieButton>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <img src="" alt="">
-                </div>
-                <div class="introduction">
-                    <h1>神奇女侠2</h1>
-                    <p>奇幻</p>
-                    <p>主演:尼古拉斯</p>
-                    <div>放映9999场</div>
-                </div>
-                <div >
-                    <MovieScore></MovieScore>
-                    <MovieButton></MovieButton>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <img src="" alt="">
-                </div>
-                <div class="introduction">
-                    <h1>神奇女侠2</h1>
-                    <p>奇幻</p>
-                    <p>主演:尼古拉斯</p>
-                    <div>放映9999场</div>
-                </div>
-                <div >
-                    <MovieScore></MovieScore>
-                    <MovieButton></MovieButton>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <img src="" alt="">
-                </div>
-                <div class="introduction">
-                    <h1>神奇女侠2</h1>
-                    <p>奇幻</p>
-                    <p>主演:尼古拉斯</p>
-                    <div>放映9999场</div>
-                </div>
-                <div >
-                    <MovieScore></MovieScore>
-                    <MovieButton></MovieButton>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <img src="" alt="">
-                </div>
-                <div class="introduction">
-                    <h1>神奇女侠2</h1>
-                    <p>奇幻</p>
-                    <p>主演:尼古拉斯
-                    </p>
-                    <div>放映9999场</div>
-                </div>
-                <div >
-                    <MovieScore></MovieScore>
-                    <MovieButton></MovieButton>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <img src="" alt="">
-                </div>
-                <div class="introduction">
-                    <h1>神奇女侠2</h1>
-                    <p>奇幻</p>
-                    <p>主演:尼古拉斯</p>
-                    <div>放映9999场</div>
-                </div>
-                <div >
-                    <MovieScore></MovieScore>
-                    <MovieButton></MovieButton>
+                    <MovieScore :mv="mv"></MovieScore>
+                    <MovieButton :mv="mv"></MovieButton>
                 </div>
             </li>
         </ul>
@@ -102,7 +26,8 @@ export default {
     components:{
         MovieScore,
         MovieButton
-    }
+    },
+    props:['MovieList']
 }
 </script>
 
@@ -117,7 +42,7 @@ export default {
         padding-bottom: .1rem
         // position: relative
         div.introduction
-            flex: 70
+            flex: 60
             margin-left: .1rem
             div
                 color: #999
@@ -125,7 +50,7 @@ export default {
                 color:#333
                 ellipsis()
         div:nth-child(3)
-            flex: 30
+            flex: 40
             display: flex
             flex-direction: column
             justify-content: space-between

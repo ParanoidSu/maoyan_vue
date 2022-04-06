@@ -1,27 +1,27 @@
 <template>
   <div>
     <header>猫眼电影</header>
-    <Movies></Movies>
+    <router-view></router-view>
     <nav class="tabbar">
       <ul>
-        <li class="active">
+        <router-link active-class="active" to="/home/movies/intheaters" tag="li">
           <b>&#xe8ae;</b>
           <span>电影</span>
-        </li>
-        <li>
+        </router-link>
+        <router-link active-class="active" to="/home/theaters" tag="li">
           <b>&#xe8c0;</b>
           <span>影院</span>
-        </li>
-        <li>
+        </router-link>
+        <router-link active-class="active" to="/home/profile" tag="li">
           <b>&#xe70b;</b>
           <span>我的</span>
-        </li>
+        </router-link>
       </ul>
     </nav>
   </div>
 </template>
 <script>
-import Movies from "@/views/home/movie/Movies.vue";
+import Movies from "@/views/home/movies/Movies";
 export default {
   components: {
     Movies,
@@ -54,7 +54,7 @@ div {
     ul {
       display: flex;
 
-      li {
+      li  {
         justify-content: center;
         align-items: center;
         flex: 1;
@@ -67,16 +67,16 @@ div {
           font-size: 0.26rem;
           font-weight: normal;
           line-height: 0.2rem;
+          
         }
 
         span {
           font-size: 0.12rem;
           transform: scale(0.9);
         }
-
-        &.active {
+        &.active{
           color: #cd4c42;
-        }
+          }
       }
     }
   }
