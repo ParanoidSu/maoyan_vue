@@ -65,12 +65,14 @@ export default {
       loading: false,
       finished: false,
       showSkeleton: true,
+      ct:'北京',
+      url:'/mmdb/movie/v2/list/hot.json'
     };
   },
   created() {
     this.hasMore = false;
-    this.limit = 10
-    this.offset = 0
+    this.limit = 10;
+    this.offset = 0;
   },
   async mounted() {
     await this._loadData();
@@ -79,11 +81,11 @@ export default {
 
   methods: {
     async _loadData() {
-      let result = await axios.get("/mmdb/movie/v2/list/hot.json", {
+      let result = await axios.get(this.url, {
         params: {
           limit: this.limit,
           offset: this.offset,
-          ct: "北京",
+          ct: this.ct,
         },
       });
       let {
